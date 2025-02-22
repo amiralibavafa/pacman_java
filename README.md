@@ -30,11 +30,11 @@ Make sure you have the following installed:
    ```bash
    mvn exec:java
 
-# How to Play 🕹️
+## How to Play 🕹️
 - Use the arrow keys (Up, Down, Left, Right) to control Pac-Man’s movement. ⬆️⬇️⬅️➡️
 - Collect all the dots to finish the level. 💎
 - Avoid the ghosts roaming the maze, as touching them will result in losing a life. ☠️
 - The score increases as Pac-Man collects dots and eats power pellets. 🔥
 
-# Author
+## Author 
 - Amirali Bavafa
