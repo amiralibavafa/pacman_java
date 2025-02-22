@@ -19,7 +19,7 @@ Make sure you have the following installed:
 
 1. Clone the repository or download the project files.
    ```bash
-   git clone https://github.com/your-username/pacman-java.git
+   git clone https://github.com/amiralibavafa/pacman_java.git
 2. Navigate to the project directory.
 
 3. Install project dependencies and compile the code using Maven.
