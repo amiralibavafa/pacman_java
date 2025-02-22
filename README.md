@@ -13,6 +13,7 @@ This is a simple Pac-Man game built in Java using Java Swing and utility classes
 
 Make sure you have the following installed:
 - **Java 8 or higher**: Java Development Kit (JDK) to compile and run the game. ☕️
+- **Maven**: Apache Maven for managing project dependencies and build lifecycle. You can install Maven from [Maven's official website](https://maven.apache.org/). 🔧
 
 ## Installation 🛠️
 
