@@ -9,6 +9,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Collections;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -162,8 +166,26 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
         loadMap();
 
         for (Block ghost : ghosts){
-            char newdirection = directions[random.nextInt(4)];
-            ghost.updateDirection(newdirection);
+            int ghostRow = ghost.y / tileSize;
+            int ghostCol = ghost.x / tileSize;
+            int pacmanRow = pacman.y / tileSize;
+            int pacmanCol = pacman.x / tileSize;
+        
+            // Use A* to get the path from the ghost to Pac-Man
+            List<int[]> path = AStar.aStar(ghostRow, ghostCol, pacmanRow, pacmanCol);
+        
+            if (path != null && path.size() > 1) {
+                // Move the ghost to the next position in the path
+                int[] nextStep = path.get(1); // the second position is the next step
+                int nextRow = nextStep[0];
+                int nextCol = nextStep[1];
+        
+                // Calculate direction based on the next step
+                if (nextRow > ghostRow) ghost.updateDirection('D');
+                else if (nextRow < ghostRow) ghost.updateDirection('U');
+                else if (nextCol > ghostCol) ghost.updateDirection('R');
+                else if (nextCol < ghostCol) ghost.updateDirection('L');
+            }
         }
         gameLoop = new Timer(50, this);
         gameLoop.start();
@@ -260,8 +282,26 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
                     pacman.velocityY = 0;   
                     for (Block ghost2 : ghosts){
                         ghost2.reset();
-                        char newdirection = directions[random.nextInt(4)];
-                        ghost2.updateDirection(newdirection);
+                        int ghostRow = ghost.y / tileSize;
+                        int ghostCol = ghost.x / tileSize;
+                        int pacmanRow = pacman.y / tileSize;
+                        int pacmanCol = pacman.x / tileSize;
+                    
+                        // Use A* to get the path from the ghost to Pac-Man
+                        List<int[]> path = AStar.aStar(ghostRow, ghostCol, pacmanRow, pacmanCol);
+                    
+                        if (path != null && path.size() > 1) {
+                            // Move the ghost to the next position in the path
+                            int[] nextStep = path.get(1); // the second position is the next step
+                            int nextRow = nextStep[0];
+                            int nextCol = nextStep[1];
+                    
+                            // Calculate direction based on the next step
+                            if (nextRow > ghostRow) ghost.updateDirection('D');
+                            else if (nextRow < ghostRow) ghost.updateDirection('U');
+                            else if (nextCol > ghostCol) ghost.updateDirection('R');
+                            else if (nextCol < ghostCol) ghost.updateDirection('L');
+                        }
                     }
                 }
             }
@@ -292,10 +332,6 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
         }
     }
     
-
-    public int calculateManhattanDistance(Block a, Block b) {
-        return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-    }
     
 
     public boolean checkCollision(Block a, Block b){
