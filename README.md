@@ -5,7 +5,7 @@ This is a simple Pac-Man game built in Java using Java Swing and utility classes
 ## Features ✨
 
 - **Classic Pac-Man Gameplay**: The player controls Pac-Man, who must collect all the dots in the maze while avoiding ghosts. 🍒
-- **Ghost AI with Greedy Search**: Ghosts use a greedy search algorithm to chase Pac-Man, prioritizing the shortest path towards Pac-Man's current location. 🧠👹
+- **Ghost AI with AStar Search**: Ghosts use a A* search algorithm to chase Pac-Man, prioritizing the shortest path towards Pac-Man's current location. 🧠👹
 - **Simple GUI**: The game uses Java Swing to create a graphical user interface to display the maze, Pac-Man, and ghosts. 🖥️
 - **Score Tracking**: The player's score is displayed, which increases as Pac-Man collects dots. 📊
 
